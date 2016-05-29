@@ -1,4 +1,4 @@
-package ua.qa;
+package ua.qa.sandbox;
 
 /**
  * Created by polkota on 29.05.2016.

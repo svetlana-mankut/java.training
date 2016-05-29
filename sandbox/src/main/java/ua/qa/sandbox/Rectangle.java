@@ -1,4 +1,4 @@
-package ua.qa;
+package ua.qa.sandbox;
 
 import org.w3c.dom.css.Rect;
 
