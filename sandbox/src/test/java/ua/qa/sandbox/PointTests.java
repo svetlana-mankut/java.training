@@ -45,6 +45,5 @@ public class PointTests {
             System.out.println("Test passed");
         } else System.out.println("Test failed: distance doesn'n match");
     }
-    
 }
 
