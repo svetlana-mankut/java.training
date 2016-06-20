@@ -1,4 +1,4 @@
-package ua.qa.adressbook;
+package ua.qa.adressbook.model;
 
 public class ContactData {
     private final String ussername;

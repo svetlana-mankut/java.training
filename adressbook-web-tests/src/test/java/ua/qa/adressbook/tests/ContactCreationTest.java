@@ -1,4 +1,4 @@
-package ua.qa.adressbook;
+package ua.qa.adressbook.tests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -10,8 +10,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
+import ua.qa.adressbook.model.ContactData;
 
-public class ContactCreation {
+public class ContactCreationTest {
     FirefoxDriver wd;
 
     @BeforeMethod
