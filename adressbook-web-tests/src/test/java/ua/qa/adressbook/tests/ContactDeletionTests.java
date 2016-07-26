@@ -17,7 +17,7 @@ import org.openqa.selenium.*;
 
 import static org.openqa.selenium.OutputType.*;
 
-public class ContactDeletionTest extends TestBase {
+public class ContactDeletionTests extends TestBase {
 
 
     @Test

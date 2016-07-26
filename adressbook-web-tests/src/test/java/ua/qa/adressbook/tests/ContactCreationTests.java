@@ -3,7 +3,7 @@ package ua.qa.adressbook.tests;
 import org.testng.annotations.Test;
 import ua.qa.adressbook.model.ContactData;
 
-public class ContactCreationTest extends TestBase {
+public class ContactCreationTests extends TestBase {
 
     @Test
     public void testContactCreation() {
