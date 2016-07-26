@@ -2,6 +2,7 @@ package ua.qa.adressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -12,9 +13,9 @@ import java.util.Random;
  * Created by polkota on 26.07.2016.
  */
 public class HelperBase {
-    protected FirefoxDriver wd;
+    protected WebDriver wd;
 
-    public HelperBase(FirefoxDriver wd) {
+    public HelperBase(WebDriver wd) {
         this.wd = wd;
     }
 
