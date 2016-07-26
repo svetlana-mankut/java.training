@@ -1,8 +1,11 @@
 package ua.qa.adressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ua.qa.adressbook.model.ContactData;
 
 /**
@@ -23,11 +26,9 @@ public class ContactHelper extends HelperBase{
         randomChoiceFromDropdown("//select[@name='bday']", "//select[@name='bday']/option[@value]");
     }
 
-    public void setYear(String year) {
-        type(By.name("byear"),year);
-            }
 
-    public void fillContactTextFields(ContactData contactData) {
+
+    public void fillContactTextFields(ContactData contactData, boolean creation) {
         type(By.name("firstname"),contactData.getUssername());
         type(By.name("middlename"),contactData.getMiddlename());
         type(By.name("lastname"),contactData.getLastname());
@@ -37,9 +38,14 @@ public class ContactHelper extends HelperBase{
         type(By.name("address"),contactData.getAdress());
         type(By.name("home"),contactData.getHomephone());
         type(By.name("mobile"),contactData.getMobile());
+        type(By.name("byear"), contactData.getYear());
 
-    }
-
+        if (creation) {
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
+           }
 
 
     public void submitContactCreation() {
