@@ -3,11 +3,15 @@ package ua.qa.adressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ua.qa.adressbook.model.ContactData;
 import ua.qa.adressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by polkota on 26.07.2016.
@@ -96,5 +100,20 @@ public class ContactHelper extends HelperBase {
     public int getContactCount() {
         return wd.findElements(By.name("selected[]")).size();
     }
-}
+
+
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = wd.findElements(By.xpath("//tr[@name = 'entry']//td[3]"));
+        for (WebElement element : elements) {
+            String lastname = element.getText();
+
+            ContactData contact = new ContactData
+                    (lastname, null, null, null, null, null, null, null, null, null, null);
+            contacts.add(contact);
+        }
+        return contacts;
+    }
+    }
+
 
