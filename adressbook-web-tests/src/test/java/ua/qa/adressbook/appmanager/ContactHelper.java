@@ -12,7 +12,7 @@ import ua.qa.adressbook.model.GroupData;
 /**
  * Created by polkota on 26.07.2016.
  */
-public class ContactHelper extends HelperBase{
+public class ContactHelper extends HelperBase {
 
 
     public ContactHelper(WebDriver wd) {
@@ -28,17 +28,16 @@ public class ContactHelper extends HelperBase{
     }
 
 
-
     public void fillContactTextFields(ContactData contactData, boolean creation) {
-        type(By.name("firstname"),contactData.getUssername());
-        type(By.name("middlename"),contactData.getMiddlename());
-        type(By.name("lastname"),contactData.getLastname());
-        type(By.name("nickname"),contactData.getNickname());
-        type(By.name("title"),contactData.getTitle());
-        type(By.name("company"),contactData.getCompany());
-        type(By.name("address"),contactData.getAdress());
-        type(By.name("home"),contactData.getHomephone());
-        type(By.name("mobile"),contactData.getMobile());
+        type(By.name("firstname"), contactData.getUssername());
+        type(By.name("middlename"), contactData.getMiddlename());
+        type(By.name("lastname"), contactData.getLastname());
+        type(By.name("nickname"), contactData.getNickname());
+        type(By.name("title"), contactData.getTitle());
+        type(By.name("company"), contactData.getCompany());
+        type(By.name("address"), contactData.getAdress());
+        type(By.name("home"), contactData.getHomephone());
+        type(By.name("mobile"), contactData.getMobile());
         type(By.name("byear"), contactData.getYear());
 
         if (creation) {
@@ -46,7 +45,7 @@ public class ContactHelper extends HelperBase{
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
-           }
+    }
 
 
     public void submitContactCreation() {
@@ -68,7 +67,9 @@ public class ContactHelper extends HelperBase{
         click(By.name("selected[]"));
     }
 
-    public void acceptAlert(){ wd.switchTo().alert().accept();}
+    public void acceptAlert() {
+        wd.switchTo().alert().accept();
+    }
 
     public void initContactModification() {
         click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
@@ -90,4 +91,9 @@ public class ContactHelper extends HelperBase{
     public boolean isThereAcontact() {
         return (isElementPresent(By.name("selected[]")));
     }
+
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
 }
+

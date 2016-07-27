@@ -8,7 +8,7 @@ import ua.qa.adressbook.model.GroupData;
 /**
  * Created by polkota on 21.06.2016.
  */
-public class GroupHelper extends HelperBase{
+public class GroupHelper extends HelperBase {
 
     public GroupHelper(WebDriver wd) {
         super(wd);
@@ -57,5 +57,9 @@ public class GroupHelper extends HelperBase{
 
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
+    }
+
+    public int getGroupCount() {
+        return wd.findElements(By.name("selected[]")).size();
     }
 }
