@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ua.qa.adressbook.model.ContactData;
+import ua.qa.adressbook.model.GroupData;
 
 /**
  * Created by polkota on 26.07.2016.
@@ -75,5 +76,18 @@ public class ContactHelper extends HelperBase{
 
     public void submitContactModification() {
         click(By.name("update"));
+    }
+
+    public void createContact(ContactData contact, boolean creation) {
+        createNewContact();
+        fillContactTextFields(contact, creation);
+        setDate();
+        setMonth();
+        submitContactCreation();
+
+    }
+
+    public boolean isThereAcontact() {
+        return (isElementPresent(By.name("selected[]")));
     }
 }

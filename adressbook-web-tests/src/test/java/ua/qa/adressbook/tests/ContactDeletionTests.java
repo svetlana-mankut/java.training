@@ -1,27 +1,17 @@
 package ua.qa.adressbook.tests;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.*;
-
-import java.util.concurrent.TimeUnit;
-import java.util.Date;
-import java.io.File;
-
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.*;
-
-import static org.openqa.selenium.OutputType.*;
+import ua.qa.adressbook.model.ContactData;
 
 public class ContactDeletionTests extends TestBase {
 
 
     @Test
     public void testContactDeletion() {
+        if (! app.getContactHelper().isThereAcontact()){
+            app.getContactHelper().createContact(new ContactData("David", "r", "Green", "polkota", "title", "company", "adress", "123456789", "987654321", "1988", "test1"),true);
+        }
+        app.getNavigationHelper().goToHome();
         app.getContactHelper().selectContact();
         app.getContactHelper().deleteSelectedContact();
         app.getContactHelper().acceptAlert();

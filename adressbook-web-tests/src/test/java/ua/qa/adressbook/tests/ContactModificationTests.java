@@ -9,6 +9,10 @@ import ua.qa.adressbook.model.ContactData;
 public class ContactModificationTests extends TestBase {
     @Test
     public void testContactModification() {
+        if (! app.getContactHelper().isThereAcontact()){
+            app.getContactHelper().createContact(new ContactData("David", "r", "Green", "polkota", "title", "company", "adress", "123456789", "987654321", "1988", "test1"),true);
+        }
+        app.getNavigationHelper().goToHome();
         app.getContactHelper().selectContact();
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactTextFields
