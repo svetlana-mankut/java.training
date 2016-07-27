@@ -15,7 +15,7 @@ public class ContactDeletionTests extends TestBase {
             app.getContactHelper().createContact(new ContactData("David", "r", "Green", "polkota", "title", "company", "adress", "123456789", "987654321", "1988", "test1"),true);
         }
         app.getNavigationHelper().goToHome();
-        app.getContactHelper().selectContact();
+        app.getContactHelper().selectContact(0);
         app.getContactHelper().deleteSelectedContact();
         app.getContactHelper().acceptAlert();
         app.getNavigationHelper().goToHome();
