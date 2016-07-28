@@ -20,7 +20,7 @@ public class ContactCreationTests extends TestBase {
         app.getNavigationHelper().goToHome();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() + 1);
-        
+
 
         before.add(contact);
 
