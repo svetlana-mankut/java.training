@@ -1,42 +1,63 @@
 package ua.qa.adressbook.model;
 
 public class ContactData {
-    private int id;
-    private final String firstname;
-    private final String lastname;
-    private final String adress;
-    private final String homephone;
-    private final String mobile;
-    private final String email;
-    private final String group;
+    private int id = Integer.MAX_VALUE;
+    private String firstname;
+    private String lastname;
+    private String adress;
+    private String homephone;
+    private String mobile;
+    private String email;
+    private String group;
 
-    public ContactData
-            (String firstname, String lastname, String adress, String homephone, String mobile, String email, String group) {
-        this.id = Integer.MAX_VALUE;
-
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.adress = adress;
-        this.homephone = homephone;
-        this.mobile = mobile;
-        this.email = email;
-        this.group = group;
-    }
-
-    public ContactData
-            (int id, String firstname, String lastname, String adress, String homephone, String mobile, String email, String group) {
+    public ContactData withId(int id) {
         this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.adress = adress;
-        this.homephone = homephone;
-        this.mobile = mobile;
-        this.email = email;
-        this.group = group;
+        return this;
     }
 
+    public ContactData withFirstname(String firstname) {
+        this.firstname = firstname;
+        return this;
+    }
 
-    public int getId() { return id; }
+    public ContactData withLastname(String lastname) {
+        this.lastname = lastname;
+        return this;
+    }
+
+    public ContactData withAdress(String adress) {
+        this.adress = adress;
+        return this;
+    }
+
+    public ContactData withHomephone(String homephone) {
+        this.homephone = homephone;
+        return this;
+    }
+
+    public ContactData withMobile(String mobile) {
+        this.mobile = mobile;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
 
     public String getFirstname() {
         return firstname;
@@ -62,8 +83,6 @@ public class ContactData {
         return email;
     }
 
-    public String getGroup() { return group; }
-
 
     @Override
     public String toString() {
@@ -72,10 +91,6 @@ public class ContactData {
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 '}';
-    }
-
-    public void setId(int id){
-        this.id = id;
     }
 
 
