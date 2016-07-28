@@ -68,6 +68,10 @@ public class ContactHelper extends HelperBase {
         wd.findElements(By.name("selected[]")).get(index).click();
     }
 
+    public void returnToContactPage() {
+        click(By.linkText("home"));
+    }
+
     public void acceptAlert() {
         wd.switchTo().alert().accept();
     }
@@ -87,6 +91,15 @@ public class ContactHelper extends HelperBase {
         setMonth();
         submitContactCreation();
 
+    }
+
+    public void modifyContact(ContactData contact, int index) {
+        returnToContactPage();
+        selectContact(index);
+        initContactModification();
+        fillContactTextFields(contact, false);
+        submitContactModification();
+        returnToContactPage();
     }
 
     public boolean isThereAcontact() {
