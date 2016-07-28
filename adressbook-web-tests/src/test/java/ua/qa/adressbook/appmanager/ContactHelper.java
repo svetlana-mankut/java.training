@@ -1,17 +1,15 @@
 package ua.qa.adressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ua.qa.adressbook.model.ContactData;
-import ua.qa.adressbook.model.GroupData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by polkota on 26.07.2016.
@@ -63,9 +61,9 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    public void selectContact(int index) {
 
-        wd.findElements(By.name("selected[]")).get(index).click();
+    public void selectContactById(int id) {
+        wd.findElement(By.cssSelector("input[value = '" + id + "']")).click();
     }
 
     public void returnToContactPage() {
@@ -93,22 +91,24 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    public void modify(ContactData contact, int index) {
+    public void modify(ContactData contact) {
         returnToContactPage();
-        selectContact(index);
+        selectContactById(contact.getId());
         initContactModification();
         fillContactTextFields(contact, false);
         submitContactModification();
         returnToContactPage();
     }
 
-    public void delete(int index) {
+
+    public void delete(ContactData contact) {
         returnToContactPage();
-        selectContact(index);
+        selectContactById(contact.getId());
         deleteSelectedContact();
         acceptAlert();
         returnToContactPage();
     }
+
 
     public boolean isThereAcontact() {
         return (isElementPresent(By.name("selected[]")));
@@ -119,8 +119,8 @@ public class ContactHelper extends HelperBase {
     }
 
 
-    public List<ContactData> list() {
-        List<ContactData> contacts = new ArrayList<ContactData>();
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<ContactData>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
 
         for (WebElement element : elements) {

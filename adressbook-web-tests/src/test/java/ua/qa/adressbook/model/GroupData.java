@@ -8,9 +8,7 @@ public class GroupData {
     private String header;
     private String footer;
 
-    public int getId() {
-        return id;
-    }
+
 
     public GroupData withId(int id) {
         this.id = id;
@@ -32,6 +30,9 @@ public class GroupData {
         return this;
     }
 
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -61,14 +62,15 @@ public class GroupData {
 
         GroupData groupData = (GroupData) o;
 
+        if (id != groupData.id) return false;
         return name != null ? name.equals(groupData.name) : groupData.name == null;
 
     }
 
     @Override
     public int hashCode() {
-        return name != null ? name.hashCode() : 0;
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
-
-
 }
