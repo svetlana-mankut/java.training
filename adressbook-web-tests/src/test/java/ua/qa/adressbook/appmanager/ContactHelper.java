@@ -33,16 +33,12 @@ public class ContactHelper extends HelperBase {
 
 
     public void fillContactTextFields(ContactData contactData, boolean creation) {
-        type(By.name("firstname"), contactData.getUssername());
-        type(By.name("middlename"), contactData.getMiddlename());
+        type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
-        type(By.name("nickname"), contactData.getNickname());
-        type(By.name("title"), contactData.getTitle());
-        type(By.name("company"), contactData.getCompany());
         type(By.name("address"), contactData.getAdress());
         type(By.name("home"), contactData.getHomephone());
         type(By.name("mobile"), contactData.getMobile());
-        type(By.name("byear"), contactData.getYear());
+        type(By.name("email"), contactData.getEmail());
 
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -104,16 +100,19 @@ public class ContactHelper extends HelperBase {
 
     public List<ContactData> getContactList() {
         List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = wd.findElements(By.xpath("//tr[@name = 'entry']//td[3]"));
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+
         for (WebElement element : elements) {
-            String lastname = element.getText();
+            String lastname = element.findElement(By.xpath("td[2]")).getText();
+            String firstname = element.findElement(By.xpath("td[3]")).getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
 
             ContactData contact = new ContactData
-                    (lastname, null, null, null, null, null, null, null, null, null, null);
+                    (id, firstname, lastname, null, null, null, null, null);
             contacts.add(contact);
         }
         return contacts;
     }
-    }
+}
 
 
