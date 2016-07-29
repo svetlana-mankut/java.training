@@ -22,11 +22,14 @@ public class ContactPhoneTests extends TestBase {
         app.goTo().HomePage();
         if (app.contact().all().size() == 0) {
             app.contact().create(new ContactData()
-                    .withFirstname("David").withLastname("Green").withAdress("adress")
+                    .withFirstname("David").withLastname("Green")
+                    .withAdress("Kyriakou Matsi, 10, Liliana Building, 2nd floor, office 203 ")
                     .withHomephone("123").withMobile("987").withWorkPhone("555")
-                    .withEmail1("david1@david").withEmail2("david2@david").withEmail3("david3@david").withGroup("test1"));
+                    .withEmail1("david1@david").withEmail2("david2@david").withEmail3("david3@david")
+                    .withGroup("test1"));
         }
     }
+
     @Test
     public void testContactPhones(){
         app.goTo().HomePage();
