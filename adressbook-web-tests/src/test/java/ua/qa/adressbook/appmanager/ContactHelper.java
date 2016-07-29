@@ -6,10 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ua.qa.adressbook.model.ContactData;
+import ua.qa.adressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by polkota on 26.07.2016.
@@ -82,9 +81,9 @@ public class ContactHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public void create(ContactData contact, boolean creation) {
+    public void create(ContactData contact) {
         createNewContact();
-        fillContactTextFields(contact, creation);
+        fillContactTextFields(contact, true);
         setDate();
         setMonth();
         submitContactCreation();
@@ -119,8 +118,8 @@ public class ContactHelper extends HelperBase {
     }
 
 
-    public Set<ContactData> all() {
-        Set<ContactData> contacts = new HashSet<ContactData>();
+    public Contacts all() {
+        Contacts contacts = new Contacts();
         List<WebElement> elements = wd.findElements(By.name("entry"));
 
         for (WebElement element : elements) {

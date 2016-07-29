@@ -1,27 +1,25 @@
 package ua.qa.adressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.qa.adressbook.model.ContactData;
+import ua.qa.adressbook.model.Contacts;
 
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase {
 
     @Test
     public void testContactCreation() {
         app.goTo().HomePage();
-        Set<ContactData> before = app.contact().all();
+        Contacts before = app.contact().all();
         ContactData contact = new ContactData()
                 .withFirstname("David").withLastname("Green").withAdress("adress").withHomephone("123456789").withMobile("987654321").withEmail("david@david").withGroup("test1");
-        app.contact().create(contact, true);
+        app.contact().create(contact);
         app.goTo().HomePage();
-        Set<ContactData> after = app.contact().all();
-        Assert.assertEquals(after.size(), before.size() + 1);
-        contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
-        before.add(contact);
+        Contacts after = app.contact().all();
+        assertThat(after.size(), equalTo(before.size() + 1));
 
-        Assert.assertEquals(before, after);
-
+        assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }
 }
