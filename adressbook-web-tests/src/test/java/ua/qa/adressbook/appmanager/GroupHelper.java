@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import ua.qa.adressbook.model.GroupData;
 import ua.qa.adressbook.model.Groups;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by polkota on 21.06.2016.
@@ -95,8 +93,6 @@ public class GroupHelper extends HelperBase {
             return new Groups(groupCache);
         }
         groupCache = new Groups();
-
-
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {
             String name = element.getText();

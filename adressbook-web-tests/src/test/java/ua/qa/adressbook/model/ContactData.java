@@ -85,6 +85,8 @@ public class ContactData {
         return mobile;
     }
 
+    public String getWorkphone() { return workphone; }
+
     public String getEmail() {
         return email;
     }
@@ -120,6 +122,7 @@ public class ContactData {
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
     }
+
 
 
 }
