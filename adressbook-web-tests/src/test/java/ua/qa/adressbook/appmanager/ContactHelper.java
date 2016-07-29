@@ -126,21 +126,7 @@ public class ContactHelper extends HelperBase {
 
     private Contacts contactCache = null;
 
-    // до л5м9 это работало!!! раскомментировать, если сломается метод олл
-   /* public Contacts all() {
-        if (contactCache != null) {
-            return new Contacts(contactCache);
-        }
-        contactCache = new Contacts();
-        List<WebElement> elements = wd.findElements(By.name("entry"));
-        for (WebElement element : elements) {
-            String lastname = element.findElement(By.xpath("td[2]")).getText();
-            String firstname = element.findElement(By.xpath("td[3]")).getText();
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
-        }
-        return new Contacts(contactCache);
-    }*/
+    
 
     public Contacts all() {
         if (contactCache != null) {
