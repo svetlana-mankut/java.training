@@ -14,6 +14,13 @@ public class ContactData {
     private String email3;
     private String allEmails;
     private String group;
+    private String allDetails;
+
+
+    public ContactData withAllDetails(String allDetails) {
+        this.allDetails = allDetails;
+        return this;
+    }
 
     public ContactData withAdress(String adress) {
         this.adress = adress;
@@ -145,17 +152,6 @@ public class ContactData {
         return allEmails;
     }
 
-
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                '}';
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -164,7 +160,6 @@ public class ContactData {
         ContactData that = (ContactData) o;
 
         if (id != that.id) return false;
-        if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
         return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
 
     }
@@ -172,9 +167,22 @@ public class ContactData {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
+    }
+
+    public String getAllDetails() {
+
+        return allDetails;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                '}';
     }
 
 
