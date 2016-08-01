@@ -8,6 +8,7 @@ import org.testng.Assert;
 import ua.qa.adressbook.model.ContactData;
 import ua.qa.adressbook.model.Contacts;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -33,6 +34,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("email3"), contactData.getEmail3());
         //setDate();
         //setMonth();
+        attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -40,6 +42,8 @@ public class ContactHelper extends HelperBase {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
     }
+
+
 
     private void fillSpecialContactInfo(ContactData contactData) {
         type(By.name("firstname"), contactData.getFirstname());

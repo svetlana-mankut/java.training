@@ -3,6 +3,7 @@ package ua.qa.adressbook.appmanager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.File;
 import java.util.List;
 import java.util.Random;
 
@@ -28,6 +29,12 @@ public class HelperBase {
                 wd.findElement(locator).clear();
                 wd.findElement(locator).sendKeys(text);
             }
+        }
+    }
+
+    protected void attach(By locator, File file){
+        if (file != null){
+            wd.findElement(locator).sendKeys(file.getAbsolutePath());
         }
     }
 
