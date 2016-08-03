@@ -32,10 +32,7 @@ public class ContactInformationTests extends TestBase {
 
         ContactData specialContact = app.contact().allSpecial().iterator().next();;
         ContactData contactInfoFromEditForm = app.contact().getEditInfo(specialContact);
-
         ContactData contactInfoFromDetailsForm = app.contact().getDetailsInfo(specialContact);
-
-
         assertThat(cleaned(mergeDetails(contactInfoFromEditForm)), equalTo(contactInfoFromDetailsForm.getAllDetails()));
     }
 
