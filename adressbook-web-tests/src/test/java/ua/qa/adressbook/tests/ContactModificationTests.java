@@ -20,7 +20,7 @@ public class ContactModificationTests extends TestBase {
             app.goTo().HomePage();
             app.contact().create(new ContactData()
                     .withFirstname("David").withLastname("Green").withAdress("adress")
-                    .withHomephone("123456789").withMobile("987654321").withGroup("test1"));
+                    .withHomephone("123456789").withMobile("987654321"));
         }
     }
 
